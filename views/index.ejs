@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name = "viewport" content = "width=device-width, minimum-scale=1">
+    <meta http-equiv = "X-UA-Compatible" content = "ie=edge">
+    <title>Project Courses | IIT Gandhinagar</title>
+    <meta name = "author" content = "Reuben Devanesan | Aditya Shekhar">
+    <meta name = "description" value = "Website for Project Courses">
+    <link rel = "icon" href = "/images/iitgnlogo.png">
+    <!--Bootstrap-->
+    <link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel = "stylesheet" href = "/css/index.css">
+    <script src="https://kit.fontawesome.com/9d7cc8090d.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class = "site">
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Project Courses</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto mr-5 mt-2 mt-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="/logout"><b>Logout</b></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!--Heading-->
+    <div class="container-fluid mt-5">
+        <div class="heading display-3 text-center">PROJECT COURSES</div><hr><br>
+    </div>
+
+    <div class = "container" id = "users">
+        <div class = "row" id = "functionality-fields">
+            <div class = "container row justify-content-md-end justify-content-center">
+                <input class = "search m-2 col-5 col-md-3 col-lg-2" placeholder = " Search"/>
+            </div>
+            <div class = "container row justify-content-center">
+                <button class = "filter-civil input-group-text m-2" id="filter-buttons">Civil Engineering</button>
+                <button class = "filter-chemical input-group-text m-2" id="filter-buttons">Chemical Engineering</button>                
+                <button class = "filter-electrical input-group-text m-2" id="filter-buttons">Electrical Engineering</button>
+                <button class = "filter-mechanical input-group-text m-2" id="filter-buttons">Mechanical Engineering</button>
+                <button class = "filter-computer input-group-text m-2" id="filter-buttons">Computer Science & Engineering</button>
+                <button class = "filter-material input-group-text m-2" id="filter-buttons">Materials Science & Engineering</button>
+            </div>
+        </div> 
+
+        <br>  
+        <ul class = "list row">
+            <% for(i = 0; i < database.length;i++){ %>
+            <li class = "col-lg-4 col-md-6 col-sm-12">
+                <div class = "card">
+                    <div class = "card-body">
+                        <h5 class = "card-title Projecttopic"><%= database[i].Projecttopic %></h5>
+                        <h6 class = "card-subtitle mb-2 text-muted Supername"><%=  database[i].Supervisor %></h6><hr>
+                        <div class = "card-text">
+                            <p class = "Name">Student Name: <%=  database[i].Name %></p>
+                            <p class = "Branch">Branch: <%=  database[i].Branch %></p>
+                            <p class = "PCC">Project Course Code: <%=  database[i].PCC %></p>
+                        </div>
+                        <a href = "#" class = "btn btn-primary" data-toggle="modal" data-target="#exampleModal" 
+                          onclick = 'modaler("<%=  database[i].Projecttopic %>", "<%=  database[i].Brief %>", "<%=  database[i].Supervisor %>", "<%=  database[i].Branch %>", "<%=  database[i].Email %>")'>Know More</a>
+                    </div>
+                </div>
+            </li>
+            <% } %>
+        </ul>      
+    </div>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" id="shadows">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">404 Error. Data Not Found!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div> 
+                <div class="modal-body" id = "boddy">404 Error. Data Not Found!</div>
+                <div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></div>
+            </div>
+        </div>
+    </div>    
+      
+    <!--Footer-->
+    <footer>
+        <br><br>  
+        <div class="container"><hr><br>
+          <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+              <ul class="list-inline text-center">
+                <li class="list-inline-item">
+                  <a href="https://www.facebook.com/ranchossofiitgn/" target="_blank" id = "footer-icon">
+                    <span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i><i class="fab fa-facebook-f  fa-stack-1x fa-inverse"></i></span>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="https://students.iitgn.ac.in/student-acad-council/index.php" target="_blank" id = "footer-icon">
+                    <span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i><i class="fa fa-globe fa-stack-1x fa-inverse"></i></span>
+                  </a>
+                </li>
+                <li class="list-inline-item" >
+                  <a href="mailto:acad.secy@iitgn.ac.in" target="_blank" id = "footer-icon">
+                    <span class="fa-stack fa-lg"> <i class="fas fa-circle fa-stack-2x"></i><i class="fa fa-envelope fa-stack-1x fa-inverse"></i></span>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="https://www.youtube.com/user/IITGN1" target="_blank" id = "footer-icon">
+                    <span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i><i class="fab fa-youtube fa-stack-1x fa-inverse"></i></span>
+                  </a>
+                </li>
+              </ul>
+              <p class="copyright text-muted text-center">Website developed by <a href = "https://www.linkedin.com/in/reuben-devanesan-1b2370193/"  target="_blank">Reuben Devanesan</a> and <a href = "https://www.linkedin.com/in/aditya7682/" target="_blank">Aditya Shekhar</a>.</p>
+            </div>
+          </div>
+        </div>
+    </footer>
+    </div>  
+
+    <!--Scripts-->
+    <script src = "//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+    <script src = "https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity = "sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin = "anonymous"></script>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity = "sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin = "anonymous"></script>
+    <script src = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity = "sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin = "anonymous"></script>
+    <script src = "/js/index.js"></script>
+</body>
+</html>
